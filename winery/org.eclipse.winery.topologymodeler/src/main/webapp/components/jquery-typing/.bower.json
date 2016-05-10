@@ -1,0 +1,14 @@
+{
+  "name": "jquery-typing",
+  "homepage": "https://github.com/tnajdek/jquery-typing",
+  "version": "0.3.2-2",
+  "_release": "0.3.2-2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.2-2",
+    "commit": "8d7babf7ad5f1de76442142a88b85fa68c81b909"
+  },
+  "_source": "https://github.com/tnajdek/jquery-typing.git",
+  "_target": "0.3.2-2",
+  "_originalSource": "https://github.com/tnajdek/jquery-typing.git"
+}

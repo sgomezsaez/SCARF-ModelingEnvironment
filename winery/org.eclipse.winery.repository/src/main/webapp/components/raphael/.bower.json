@@ -1,0 +1,14 @@
+{
+  "name": "raphael",
+  "homepage": "https://github.com/DmitryBaranovskiy/raphael",
+  "version": "2.0.1",
+  "_release": "2.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.1",
+    "commit": "300aa589f5a0ba7fce667cd62c7cdda0bd5ad904"
+  },
+  "_source": "git://github.com/DmitryBaranovskiy/raphael.git",
+  "_target": "2.0.1",
+  "_originalSource": "raphael"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "bootstrap-spinedit",
+  "homepage": "https://github.com/scyv/bootstrap-spinedit",
+  "version": "1.0.0",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "0f8460693f7f0081c88e8d5f7df1d534d81e40db"
+  },
+  "_source": "https://github.com/scyv/bootstrap-spinedit.git",
+  "_target": "1.0.0",
+  "_originalSource": "https://github.com/scyv/bootstrap-spinedit.git"
+}

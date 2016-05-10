@@ -1,0 +1,23 @@
+{
+  "name": "select2",
+  "version": "3.4.5",
+  "main": [
+    "select2.js",
+    "select2.css",
+    "select2.png",
+    "select2x2.png",
+    "select2-spinner.gif"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.7.1"
+  },
+  "_cacheHeaders": {
+    "ETag": "\"06738562eb22504f5cd7f31e56de7cf81809955c\"",
+    "Content-Type": "application/zip",
+    "Content-Disposition": "attachment; filename=select2-3.4.5.zip"
+  },
+  "_release": "e-tag:06738562e",
+  "_source": "https://github.com/ivaynberg/select2/archive/3.4.5.zip",
+  "_target": "*",
+  "_originalSource": "https://github.com/ivaynberg/select2/archive/3.4.5.zip"
+}

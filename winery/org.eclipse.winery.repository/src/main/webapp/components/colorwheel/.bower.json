@@ -1,0 +1,38 @@
+{
+  "name": "Colorwheel",
+  "author": "J. Weir <john@famedriver.com>",
+  "contributors": [
+    {
+      "name": "Jesse Ikonen"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "dependencies": {
+    "jquery": "2.0.3",
+    "raphael": "2.0.1"
+  },
+  "ignore": [
+    "/*.*",
+    "README",
+    "javascripts/raphael*.js",
+    "test"
+  ],
+  "keywords": [
+    "color picker"
+  ],
+  "homepage": "https://github.com/koppor/colorwheel",
+  "_release": "e83f376b5c",
+  "_resolution": {
+    "type": "branch",
+    "branch": "bower",
+    "commit": "e83f376b5cefe853415090a9e799ff97cec81c3e"
+  },
+  "_source": "https://github.com/koppor/colorwheel.git",
+  "_target": "bower",
+  "_originalSource": "https://github.com/koppor/colorwheel.git"
+}

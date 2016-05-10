@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="org.eclipse.winery.repository">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/templates"/>
+        <dependent-module archiveName="org.eclipse.winery.common-0.1.37-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.eclipse.winery.common/org.eclipse.winery.common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.eclipse.winery.generators.ia-0.1.37-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.eclipse.winery.generators.ia/org.eclipse.winery.generators.ia">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.eclipse.winery.repository.client-0.1.37-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.eclipse.winery.repository.client/org.eclipse.winery.repository.client">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="winery"/>
+        <property name="java-output-path" value="/org.eclipse.winery.repository/target/classes"/>
+    </wb-module>
+</project-modules>

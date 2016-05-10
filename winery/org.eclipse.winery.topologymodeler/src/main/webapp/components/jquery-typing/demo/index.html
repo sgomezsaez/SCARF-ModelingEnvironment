@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta content='text/html;charset=utf-8' http-equiv='content-type' />
+		<title>jQuery-typing</title>
+		<link href='style.css' rel='stylesheet' type='text/css' />
+	</head>
+	<body>
+		<a href="http://github.com/tnajdek/jquery-typing"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
+		<div id='content'>
+			<h1>
+				jQuery-typing
+				<span class='version'>v0.3.2</span>
+			</h1>
+			<p>Assign callbacks for started/stopped typing events.</p>
+			<h2>Usage</h2>
+			<pre><code>$(&#39;:text&#39;).typing({&#x000A;    start: function (event, $elem) {&#x000A;        $elem.css(&#39;background&#39;, &#39;#fa0&#39;);&#x000A;    },&#x000A;    stop: function (event, $elem) {&#x000A;        $elem.css(&#39;background&#39;, &#39;#f00&#39;);&#x000A;    },&#x000A;    delay: 400&#x000A;});</code></pre>
+			
+			<p><code>typing</code> command takes key-value object with <code>start</code>, <code>stop</code> and <code>delay</code> keys. They are all optional, so you can either pass only <code>start</code> callback, <code>stop</code> callback, <code>stop</code> callback and <code>delay</code> time, or everything.</p>
+			
+			<p><code>delay</code> is amount of time the plugin waits for another keypress before judging that typing has stopped; it is expressed in milliseconds and defaults to 400. Regardless of <code>delay</code>&#8217;s value, the <code>stop</code> callback is called immediately when blur event occurs.</p>
+			
+			<p>Callbacks are passed two arguments: event that caused callback execution and jQuery object for matched element. Possible events are <code>keypress</code> or <code>keydown</code> for <code>start</code> callbacks and <code>keyup</code> or <code>blur</code> for <code>stop</code> callbacks.</p>
+			<h2>Demo</h2>
+			<table id="typing-demo-table">
+				<thead>
+					<tr>
+						<th>type</th>
+						<th class='wide'>element</th>
+						<th class='wide'>typing in progress</th>
+						<th>delay [ms]</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>text</td>
+						<td>
+							<input data-provide="typing" data-typing-delay="400" type='text' />
+						</td>
+						<td class='in-progress'><span class="bright">&#x25CF;</span></td>
+						<td class='delay'>400</td>
+					</tr>
+					<tr>
+						<td>text</td>
+						<td>
+							<input data-provide="typing" data-typing-delay="1000" type='text' />
+						</td>
+						<td class='in-progress'><span class="bright">&#x25CF;</span></td>
+						<td class='delay'>1000</td>
+					</tr>
+					<tr>
+						<td>textarea</td>
+						<td>
+							<textarea rows='3' data-provide="typing" data-typing-delay="0"></textarea>
+						</td>
+						<td class='in-progress'><span class="bright">&#x25CF;</span></td>
+						<td class='delay'>0</td>
+					</tr>
+				</tbody>
+			</table>
+			<h2>Download</h2>
+			<p>Download directly: <a href='https://github.com/tnajdek/jquery-typing/blob/master/plugin/jquery.typing-0.3.2.min.js'>production version</a></p>
+			
+			<p>For more info &amp; development version visit <a href='http://github.com/tnajdek/jquery-typing'>GitHub</a>.</p>
+			<h2>Meta</h2>
+			<p>jQuery-typing is written by <a href='http://narf.pl/'>Maciej Konieczny</a>. This software is released into the <a href='http://unlicense.org/'>public domain</a> and uses <a href='http://semver.org/'>semantic versioning</a> for release numbering.</p>
+			<p>jQuery-typing has been tweaked by <a href='http://doppnet.com'>Tom Najdek</a> to support data-api and trigger events.</p>
+		</div>
+
+		<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js' type='text/javascript'></script>
+		<script src='https://rawgithub.com/tnajdek/jquery-typing/master/plugin/jquery.typing-0.3.2.min.js' type='text/javascript'></script>
+		<script type='text/javascript'>
+		//<![CDATA[
+		$(function () {
+
+			$('#typing-demo-table').on('typing:start', ':input', function(event) {
+					var $dot = $(this).parent().siblings('.in-progress').children();
+					$dot.removeClass('bright');
+					
+			});
+
+			$('#typing-demo-table').on('typing:stop', ':input', function(event) {
+				var $dot = $(this).parent().siblings('.in-progress').children();
+				$dot.addClass('bright');
+			});
+
+		});
+		//]]>
+		</script>
+	</body>
+</html>
