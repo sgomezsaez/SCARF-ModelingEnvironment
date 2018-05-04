@@ -115,9 +115,9 @@
 
 <script>
 var indexPar=0;
-var SIMILARITY_ENGINE_BASE_URL="http://192.168.99.100:8095";
-var PERTOS_BASE_URL="http://192.168.99.100:8090";
-var NEFOLOG_BASE_URL="http://192.168.99.100:8080";
+var SIMILARITY_ENGINE_BASE_URL="http://0.0.0.0:8095";
+var PERTOS_BASE_URL="http://0.0.0.0:8090";
+var NEFOLOG_BASE_URL="http://0.0.0.0:8010";
 /*
  *Adding to the query string the parameters specified under the interface 
  */

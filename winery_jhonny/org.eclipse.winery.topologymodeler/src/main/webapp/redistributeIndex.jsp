@@ -65,14 +65,14 @@
 <%@taglib prefix="nt"    tagdir="/WEB-INF/tags/common/templates/nodetemplates" %>
 <%@taglib prefix="ntrq"  tagdir="/WEB-INF/tags/common/templates/nodetemplates/reqscaps" %>
 <%@taglib prefix="pol"   tagdir="/WEB-INF/tags/common/policies" %>
-<%@taglib prefix="enr"     tagdir="/WEB-INF/tags/enricher" %>
-
 <%@taglib prefix="t"     tagdir="/WEB-INF/tags" %>
 
 <%@taglib prefix="c"     uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="wc"    uri="http://www.eclipse.org/winery/functions" %>
 
 <%@taglib prefix="tc"   tagdir="/WEB-INF/tags/common/topologycompletion"%>
+<%@taglib prefix="enr"     tagdir="/WEB-INF/tags/enricher" %>
+<%@taglib prefix="utility"     tagdir="/WEB-INF/tags/utility" %>
 
 <%
 	String repositoryURL = request.getParameter("repositoryURL");
@@ -291,6 +291,7 @@
 <enr:view-appknow />
 <enr:service-temp-enr />
 <enr:cost-nefolog-refine />
+<utility:utility />
 
 <script>
 var flagPop = true;
@@ -573,7 +574,7 @@ Collection<QNameWithName> artifactTemplateList = client.getListOfAllInstances(Ar
 
 			<ul class="dropdown-menu" role="menu">
 				<li><a href="#" onclick="showPerformance();">Performance Reqs</a></li>				
-				<li><a href="#" onclick="showWorkload();">Workload Behaviour</a></li>				
+				<li><a href="#" onclick="showWorkload();">Workload Behaviour</a></li>
 				
 			</ul>
 		</div>

@@ -22,9 +22,9 @@ define(
 		var TOSCA_WINERY_EXTENSIONS_NAMESPACE ="http://www.opentosca.org/winery/extensions/tosca/2013/02/12";
 		var TOSCA_SELFSERVICE_NAMESPACE ="http://www.eclipse.org/winery/model/selfservice";
 
-		var SIMILARITY_ENGINE_BASE_URL="http://192.168.99.100:8095";
-		var PERTOS_BASE_URL="http://192.168.99.100:8090";
-		var NEFOLOG_BASE_URL="http://192.168.99.100:8080";
+		var SIMILARITY_ENGINE_BASE_URL="http://0.0.0.0:8095";
+		var PERTOS_BASE_URL="http://0.0.0.0:8090";
+		var NEFOLOG_BASE_URL="http://0.0.0.0:8080";
 		
 		var topologyTemplateURL;
 		var topologyTemplateURLMU;
@@ -423,9 +423,17 @@ define(
 				var headerContainer = $(this).children("div.headerContainer");				
 				var typeQNameStr = headerContainer.children("span.typeQName").text();
 				
+				//console.log(headerContainer.children("span.typeQName"));
+				//console.log(headerContainer.children(".context").children("id"));
+				console.log($(this).children("div.headerContainer").prev().prevObject.prevObject["0"].id);
+
+				var id = $(this).children("div.headerContainer").prev().prevObject.prevObject["0"].id;
+				
+				
 				xmlw.writeStartElement("node");
 				var qname = getQName(typeQNameStr);
-	        	xmlw.writeAttributeString("id", qname.localName);
+				//var qname = getQName(nameStr);
+	        	xmlw.writeAttributeString("id", id);
 	        	xmlw.writeStartElement("level");
 	        	if(root){
 	        		xmlw.writeString("root");
@@ -441,10 +449,9 @@ define(
         	xmlw.writeEndElement();
         	
         }
+        
+        
 		function getTopologyTemplateAsXMLNoRoot(needsDefinitionsTag,xmlw) {
-
-			
-
 			if (needsDefinitionsTag) {
 				xmlw.writeStartElement("tosca:Definitions");
 				xmlw.writeAttributeString("xmlns:tosca", TOSCA_NAMESPACE);

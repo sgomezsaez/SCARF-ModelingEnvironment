@@ -29,9 +29,9 @@ $("#workloadAdded").on("shown.bs.modal", function() {
 	$("#addWorkload").focus();
 });
 
-var SIMILARITY_ENGINE_BASE_URL="http://192.168.99.100:8095";
-var PERTOS_BASE_URL="http://192.168.99.100:8090";
-var NEFOLOG_BASE_URL="http://192.168.99.100:8080";
+var SIMILARITY_ENGINE_BASE_URL="http://0.0.0.0:8095";
+var PERTOS_BASE_URL="http://0.0.0.0:8090";
+var NEFOLOG_BASE_URL="http://0.0.0.0:8080";
 
 /*
  * Builds the XML that is render when choosing Workload Characteristics from the menu

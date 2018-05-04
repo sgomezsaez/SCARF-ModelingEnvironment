@@ -67,7 +67,6 @@
 <%@taglib prefix="nt"    tagdir="/WEB-INF/tags/common/templates/nodetemplates" %>
 <%@taglib prefix="ntrq"  tagdir="/WEB-INF/tags/common/templates/nodetemplates/reqscaps" %>
 <%@taglib prefix="pol"   tagdir="/WEB-INF/tags/common/policies" %>
-<%@taglib prefix="enr"     tagdir="/WEB-INF/tags/enricher" %>
 
 <%@taglib prefix="t"     tagdir="/WEB-INF/tags" %>
 
@@ -75,6 +74,8 @@
 <%@taglib prefix="wc"    uri="http://www.eclipse.org/winery/functions" %>
 
 <%@taglib prefix="tc"   tagdir="/WEB-INF/tags/common/topologycompletion"%>
+<%@taglib prefix="utility"     tagdir="/WEB-INF/tags/utility" %>
+<%@taglib prefix="enr"     tagdir="/WEB-INF/tags/enricher" %>
 
 <%
 	String repositoryURL = request.getParameter("repositoryURL");
@@ -264,6 +265,7 @@
 <enr:discover-simapps />
 <enr:view-appknow />
 <enr:cost-nefolog />
+<utility:utility />
 <script>
 $( document ).ready(function() {
 	var nameDistribution = "<%=id%>";
