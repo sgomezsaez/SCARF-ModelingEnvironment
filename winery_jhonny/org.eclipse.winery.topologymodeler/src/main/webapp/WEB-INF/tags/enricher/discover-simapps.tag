@@ -78,7 +78,7 @@ function showSimilarityData(data,topologyTemplateURL){
 	    //alert(encodedDistURL);
 	    $('#rowsim'+i).append('<td><a href="javascript:void(0)" onclick="return redirectAdapt('+encodedTemplateURL+','+encodedDistURL+')">Refine</a></td>');
 	    $('#rowsim'+i).append('<td><a href="javascript:void(0)" onclick="showCostNefolog('+data[i].appId+')">View</a></td>');
-	    $('#rowsim'+i).append('<td><a href="javascript:void(0)" onclick="startUtilityCalculation('+data[i].appId+','+"'"+data[i].url+"'"+')">Calculate</a></td>');
+	    $('#rowsim'+i).append('<td><a href="javascript:void(0)" id="utility_' + data[i].appId + '" onclick="startUtilityCalculation('+data[i].appId+','+"'"+data[i].url+"'"+')">Calculate</a></td>');
 
 	    //$('#rowsim'+i).append('<td><a href="javascript:void(0)" onclick="showAppKnowledge('+data[i].appId+')"><img class= "icon" src="view-icon.png" /></a></td>');
 	    //('#optionsSim'+i).append('<a href="javascript:void(0)" onclick="showAppKnowledge('+data[i].appId+')"><img src="../images/redist-icon.png" /></a>');

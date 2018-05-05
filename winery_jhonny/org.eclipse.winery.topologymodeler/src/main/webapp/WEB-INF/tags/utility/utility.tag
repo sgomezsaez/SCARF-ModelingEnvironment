@@ -34,9 +34,11 @@
 								<label for="f_blank" class="control-label"></label>
 							</div>
 							<div class="form-group">
+								<p align="center">
 								<label for="f_nefolog_config" class="control-label">Nefolog Config (separated by ';'):</label>
 					 			<input type="text" id="nefolog_config">
-					 			(optional for cost calculation)
+					 			(optional for cost calculation.) <br /><mark>Note:</mark> Please see <a href="http://0.0.0.0:8010/nefolog/offerings">Nefolog Offerings</a> for the complete list of offerings. <br/>Nefolog configurations can be accessed with /offerings/offering_id/configuration_id>
+					 			</p>
 							</div>
 							<div class="form-group">
 								<h5>Utility Function</h5>
@@ -47,8 +49,10 @@
 								</select> 		
 							</div>
 							<div class="form-group">
+								<p align="center">
 								<button type="button" id ="discoverSubfunctions" class="btn btn-primary" onclick="loadUtilitySubFunctions()">
 									Display Sub-functions</button>		
+								</p>
 							</div>
 							<div class='form-group'>
 								<h5>Utility Sub-functions </h5>
@@ -108,6 +112,9 @@ function showDiagUtility(){
 var SIMILARITY_ENGINE_BASE_URL="http://0.0.0.0:8095";
 var NEFOLOG_BASE_URL="http://0.0.0.0:8010";
 var KERETA_BASE_URL="http://0.0.0.0:8075/Kereta";
+
+var applicationId = null;
+var applicationUrl = null;
 
 function getUfObject(xml)
 {
@@ -389,6 +396,7 @@ function assignCostNefologFunction(ufId, nefologConfig, functionNumber)
 var globalUtilitySubfunctionsDetail = [];
 var globalUtilitySubfunctions = null;
 var globalUtilityFunctionId = null;
+var globalUtilityCalculationResult = null;
 
 function loadUtilitySubFunctions() {
 	ufId = $("#keretaSelectUf").val();
@@ -881,7 +889,7 @@ function displayUtilityCalculationResult(res) {
 	var resultForm = "<div class='form-group'>" + 
 					"<h5 align=\"center\"> Utilty Calculation Result (Monetary) </h5>" +
 					"<div class='form-group'>" +
-					"<label for='utility_value' class='control-label'> Utility (Monetary Value): </label>" + result +
+					"<label id='utility_value' for='utility_value' class='control-label'> Utility (Monetary Value): </label>" + result +
 					"</div>";
 
 	
@@ -963,6 +971,7 @@ function calculateUtility() {
 			var utilityCalculationRes = calculateKeretaUtility(createdResources.ufId, key);
 			console.log("calculateUtility: utility calculation result: ");
 			console.log(utilityCalculationRes);
+			globalUtilityCalculationResult = utilityCalculationRes.result;
 			// Deleting preliminary utility function
 			var resultUfCostDeletion = deleteCostFunction(utilityCalculationRes.ufId, "3");
 			console.log("calculateUtility: removing utility subfunction cost: " + resultUfCostDeletion);
@@ -978,7 +987,10 @@ function calculateUtility() {
 
 function finishCalculation() {
 	var resultUfCostDeletionOriginal = deleteCostFunction(globalUtilityFunctionId, "3");
-	console.log("calculateUtility: removing original utility subfunction cost: " + resultUfCostDeletionOriginal);
+	console.log("finishCalculation: removing original utility subfunction cost: " + resultUfCostDeletionOriginal);
+	$("#displayUtility").modal("hide");
+	console.log("finishCalculation: finishing calculation with utility result: " + globalUtilityCalculationResult);
+	$("#utility_" + applicationId).text(globalUtilityCalculationResult);
 }
 
 function startUtilityCalculation(id, url) {
@@ -986,7 +998,8 @@ function startUtilityCalculation(id, url) {
 	console.log("UUUUUUUUUUUUUUUUU");
 	console.log(id);
 	console.log(url);
-	
+	applicationId = id;
+	applicationUrl = url;
 	showDiagUtility();
 }
 
