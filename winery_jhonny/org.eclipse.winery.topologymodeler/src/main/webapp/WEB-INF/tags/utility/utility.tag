@@ -359,6 +359,10 @@ function createCostNefologFunction(ufId, nefologConfig, subfunctionNumber)
 
 function assignCostNefologFunction(ufId, nefologConfig, functionNumber)
 {
+	console.log("assignCostNefologFunction: init");
+	console.log("ufid " + ufId);
+	console.log("nefolog config " + nefologConfig);
+	console.log("functionNumber " + functionNumber);
 	var res = null;
 	var doc = $.parseXML("<subfunction/>");
 	var functionId = doc.createElement("functionId");

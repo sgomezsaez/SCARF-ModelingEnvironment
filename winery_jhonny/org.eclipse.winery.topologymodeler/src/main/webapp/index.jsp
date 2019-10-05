@@ -1614,7 +1614,9 @@ require(["winery-topologymodeler-AMD"], function(wt) {
  *This is the function that is called when redirecting to the refinement interface 
  */
 function redirectAdapt(urlTemplateAlpha, urlTemplateGamma ){
-	
+	console.log("redirectAdapt: init");
+	console.log("redirectAdapt: received url template alpha " + urlTemplateAlpha);
+	console.log("redirectAdapt: received url template gamma " + urlTemplateGamma);
 	var winery_base_url="http://localhost:8080";
 	
 	//Obtaining the XML specifying the the Workload
