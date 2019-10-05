@@ -1,5 +1,5 @@
+org/eclipse/winery/model/selfservice/ObjectFactory.class
 org/eclipse/winery/model/selfservice/Application$Options.class
+org/eclipse/winery/model/selfservice/Application.class
 org/eclipse/winery/model/selfservice/ApplicationOption.class
 org/eclipse/winery/model/selfservice/package-info.class
-org/eclipse/winery/model/selfservice/ObjectFactory.class
-org/eclipse/winery/model/selfservice/Application.class

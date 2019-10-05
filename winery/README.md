@@ -1,5 +1,5 @@
-# Winery
-Winery is a Web-based environment to graphically model TOSCA topologies and plans managing these topologies.
+# SCARF-Modeling Environment
+The SCARF Modeling environment is based on Winery. [Winery](https://github.com/eclipse/winery) is a Web-based environment to graphically model TOSCA topologies and plans managing these topologies.
 It is an Eclipse project and thus support is available through its project page https://projects.eclipse.org/projects/soa.winery.
 Winery is also part of the OpenTOSCA ecosystem where more information is available at http://www.opentosca.org.
 

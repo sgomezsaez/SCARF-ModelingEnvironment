@@ -457,6 +457,10 @@ public class Utils {
 		return Prefs.INSTANCE.getWineryTopologyModelerPath();
 	}
 	
+	public static String getScarfUtilityModuleURL() {
+		return Prefs.INSTANCE.getScarfUtilityModuleURL();
+	}
+	
 	/**
 	 * Detect the mime type of the stream. The stream is marked at the beginning
 	 * and reset at the end

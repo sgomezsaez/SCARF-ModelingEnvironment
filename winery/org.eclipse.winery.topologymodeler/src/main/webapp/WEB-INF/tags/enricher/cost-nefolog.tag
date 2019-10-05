@@ -39,12 +39,17 @@ function showDiagCostNefolog(){
 /*
  * Performing the requests to Nefolog
  */
+ 
+var SIMILARITY_ENGINE_BASE_URL="http://0.0.0.0:8095";
+var PERTOS_BASE_URL="http://0.0.0.0:8090";
+var NEFOLOG_BASE_URL="http://0.0.0.0:8010";
+ 
 function showCostNefolog(id) {		
-	var nefologURL="http://ec2-52-31-0-129.eu-west-1.compute.amazonaws.com:8080/nefolog/";
+	var nefologURL= NEFOLOG_BASE_URL + "/nefolog/";
 	
 	/*Obtaining characteristics of the app to add them as parameters to Nefolog*/
 	$.ajax({
-		url: "/SimilarityEngine/application-knowledge/"+id,
+		url: SIMILARITY_ENGINE_BASE_URL + "/SimilarityEngine/application-knowledge/" + id,
 		type: "GET",
 		beforeSend:function(){
 			$("#comp-cost").show();
@@ -112,8 +117,8 @@ function showCostNefolog(id) {
  */
 function viewOffering(offerURL,k,qofferCost,confid){
 	
-	var nefologURL="http://ec2-52-31-0-129.eu-west-1.compute.amazonaws.com:8080/nefolog";
-	var nefologCostURL="http://ec2-52-31-0-129.eu-west-1.compute.amazonaws.com:8080/nefolog/costCalculator?configid="+confid+qofferCost;
+	var nefologURL= NEFOLOG_BASE_URL + "/nefolog";
+	var nefologCostURL= NEFOLOG_BASE_URL + "/nefolog/costCalculator?configid=" + confid + qofferCost;
 				
 			$.ajax({
 				url: nefologURL+decodeURIComponent(offerURL),
@@ -206,7 +211,7 @@ function getTitle(text) {
 // Make the actual CORS request.
 function makeCorsRequest() {
   // All HTML5 Rocks properties support CORS.
-  var url = 'http://ec2-52-31-0-129.eu-west-1.compute.amazonaws.com:8080/nefolog/candidateSearch?servicetype=application&cpuCores=9&cpuSpeed=1500&io=moderate&memory=15&storage=600&bandwidth=400&transactions=5000&media=json';
+  var url = NEFOLOG_BASE_URL + '/nefolog/candidateSearch?servicetype=application&cpuCores=9&cpuSpeed=1500&io=moderate&memory=15&storage=600&bandwidth=400&transactions=5000&media=json';
 
   var xhr = createCORSRequest('GET', url);
   if (!xhr) {

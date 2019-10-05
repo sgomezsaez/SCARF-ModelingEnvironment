@@ -22,6 +22,10 @@ define(
 		var TOSCA_WINERY_EXTENSIONS_NAMESPACE ="http://www.opentosca.org/winery/extensions/tosca/2013/02/12";
 		var TOSCA_SELFSERVICE_NAMESPACE ="http://www.eclipse.org/winery/model/selfservice";
 
+		var SIMILARITY_ENGINE_BASE_URL="http://0.0.0.0:8095";
+		var PERTOS_BASE_URL="http://0.0.0.0:8090";
+		var NEFOLOG_BASE_URL="http://0.0.0.0:8080";
+		
 		var topologyTemplateURL;
 		var topologyTemplateURLMU;
 		var repositoryURL;
@@ -56,7 +60,10 @@ define(
 			saveNewMU:saveNewMU,
 
 			TOSCA_NAMESPACE: TOSCA_NAMESPACE,
-			TOSCA_WINERY_EXTENSIONS_NAMESPACE: TOSCA_WINERY_EXTENSIONS_NAMESPACE
+			TOSCA_WINERY_EXTENSIONS_NAMESPACE: TOSCA_WINERY_EXTENSIONS_NAMESPACE,
+			SIMILARITY_ENGINE_BASE_URL: SIMILARITY_ENGINE_BASE_URL,
+			PERTOS_BASE_URL: PERTOS_BASE_URL,
+			NEFOLOG_BASE_URL: NEFOLOG_BASE_URL
 		};
 		return module;
 
@@ -228,7 +235,7 @@ define(
 			var index=0;
 			//alert(alphaTopologyPertos());
 			$.ajax({
-				url: "http://129.69.214.210:8080/pertos/topology/alphatopology",
+				url: PERTOS_BASE_URL + "/pertos/topology/alphatopology",
 				type: "POST",
 				contentType: 'application/xml',
 				data: alphaTopologyPertos(),
@@ -250,7 +257,7 @@ define(
 							
 				    //Invoking PERTOS to get the functional similar topologies
 					$.ajax({
-						url: "http://129.69.214.210:8080/pertos/similartopology/"+idAlpha,
+						url: PERTOS_BASE_URL + "/pertos/similartopology/"+idAlpha,
 						type: "GET",
 						success: function(dataSim, textStatus, jqXHR) {
 							//Extracting from the XML just the IDs of applications that are sent
@@ -262,7 +269,7 @@ define(
 							
 								/*Invoking SimilarityEngine Service*/
 								$.ajax({
-									url: "/SimilarityEngine/application-discoverability",
+									url: SIMILARITY_ENGINE_BASE_URL + "/SimilarityEngine/application-discoverability",
 									type: "POST",
 									contentType: 'text/xml',
 									data: getSimilarityDataXMLQuerySE(listSimilar),							
@@ -305,7 +312,7 @@ define(
 			// and remember the jqxhr object for this request
 			
 			$.ajax({
-						url: "/SimilarityEngine/application-knowledge",
+						url: SIMILARITY_ENGINE_BASE_URL + "/SimilarityEngine/application-knowledge",
 						type: "POST",
 						contentType: 'text/xml',
 						data: getSimilarityDataXML(),
@@ -416,9 +423,17 @@ define(
 				var headerContainer = $(this).children("div.headerContainer");				
 				var typeQNameStr = headerContainer.children("span.typeQName").text();
 				
+				//console.log(headerContainer.children("span.typeQName"));
+				//console.log(headerContainer.children(".context").children("id"));
+				console.log($(this).children("div.headerContainer").prev().prevObject.prevObject["0"].id);
+
+				var id = $(this).children("div.headerContainer").prev().prevObject.prevObject["0"].id;
+				
+				
 				xmlw.writeStartElement("node");
 				var qname = getQName(typeQNameStr);
-	        	xmlw.writeAttributeString("id", qname.localName);
+				//var qname = getQName(nameStr);
+	        	xmlw.writeAttributeString("id", id);
 	        	xmlw.writeStartElement("level");
 	        	if(root){
 	        		xmlw.writeString("root");
@@ -434,10 +449,9 @@ define(
         	xmlw.writeEndElement();
         	
         }
+        
+        
 		function getTopologyTemplateAsXMLNoRoot(needsDefinitionsTag,xmlw) {
-
-			
-
 			if (needsDefinitionsTag) {
 				xmlw.writeStartElement("tosca:Definitions");
 				xmlw.writeAttributeString("xmlns:tosca", TOSCA_NAMESPACE);

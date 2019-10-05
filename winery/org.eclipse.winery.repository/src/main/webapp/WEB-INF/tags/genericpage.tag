@@ -57,6 +57,10 @@
 
 	<link rel="stylesheet" type="text/css" href="http://eclipse.org/orion/editor/releases/6.0/built-editor.css"/>
 
+	<!-- Part of the Kereta-Integration -->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/components/Kereta/css/kereta.css" />
+ 	<!-- <link rel="stylesheet" href="http://localhost/Kereta/css/kereta.css" /> -->
+
 	<link type="text/css" href="${w:topologyModelerURI()}/css/winery-common.css" rel="stylesheet" />
 
 	<script type='text/javascript' src='${pageContext.request.contextPath}/components/requirejs/require.js'></script>
@@ -114,6 +118,18 @@
 	<script type='text/javascript' src='${pageContext.request.contextPath}/components/bootstrap-spinedit/js/bootstrap-spinedit.js'></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/winery-support-non-AMD.js"></script>
 	<script type="text/javascript" src="${w:topologyModelerURI()}/js/winery-common.js"></script>
+
+	<!-- Part of the Kereta-Integration -->
+	<script type='text/javascript' src='${pageContext.request.contextPath}/components/Kereta/js/kereta.js'></script>
+	<script type='text/javascript' src='${pageContext.request.contextPath}/components/Kereta/js/keretaConfig.js'></script>
+	<script type='text/javascript' src='${pageContext.request.contextPath}/components/Kereta/js/keretaApplication.js'></script>
+	<script type='text/javascript' src='${pageContext.request.contextPath}/components/Kereta/js/keretaFunction.js'></script>
+	<script type='text/javascript' src='${pageContext.request.contextPath}/components/Kereta/js/keretaUtilityFunction.js'></script>
+	<!-- <script type='text/javascript' src='http://localhost/Kereta/js/kereta.js'></script>
+	<script type='text/javascript' src='http://localhost/Kereta/js/keretaConfig.js'></script>
+	<script type='text/javascript' src='http://localhost/Kereta/js/keretaApplication.js'></script>
+	<script type='text/javascript' src='http://localhost/Kereta/js/keretaFunction.js'></script>
+	<script type='text/javascript' src='http://localhost/Kereta/js/keretaUtilityFunction.js'></script> -->
 
 	<script>
 	// all x-editable popups should be placed in a way to fit "perfectly" on the screen
@@ -278,6 +294,12 @@ $(function() {
 				<div class="right"></div>
 			</a>
 
+			<c:set var="scarfUtilityModuleURL" value="<%=Prefs.INSTANCE.getProperties().get(\"scarfUtilityModuleURL\")%>"/>
+			<c:if test="${not empty scarfUtilityModuleURL}">
+				<button class="keretaGUI" role="button" onClick="kereta_GUI('${scarfUtilityModuleURL}');">
+					Utility Calculation
+				</button>
+			</c:if>
 		</div>
 	</div>
 

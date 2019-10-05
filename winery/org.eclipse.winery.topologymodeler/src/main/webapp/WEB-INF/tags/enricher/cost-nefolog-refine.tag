@@ -115,6 +115,9 @@
 
 <script>
 var indexPar=0;
+var SIMILARITY_ENGINE_BASE_URL="http://0.0.0.0:8095";
+var PERTOS_BASE_URL="http://0.0.0.0:8090";
+var NEFOLOG_BASE_URL="http://0.0.0.0:8010";
 /*
  *Adding to the query string the parameters specified under the interface 
  */
@@ -144,7 +147,8 @@ function showConstraintsForm() {
  * Invoking the Nefolog service to render Candidate Offerings
  */
 function showCostNefolog() {		
-	var nefologURL="http://ec2-52-31-0-129.eu-west-1.compute.amazonaws.com:8080/nefolog/";
+	// TODO: change to go through the service types in the topology and calculate the candidates
+	var nefologURL= NEFOLOG_BASE_URL + "/nefolog/";
 	//var qStringNefolog=nefologURL+"candidateSearch?servicetype=application&cpuCores=";
 	var qStringNefolog=nefologURL+"candidateSearch?servicetype=application&io=moderate&media=json";
 	//qStringNefolog=qStringNefolog+$("#np_avg").text()+'&cpuSpeed='+$("#psd_avg").text()+'&io=moderate';
@@ -180,7 +184,7 @@ function showCostNefolog() {
  * Invoking Nefolog service to calculate distribution costs 
  */
 function calculateCost(){
-	var nefologURLCost="http://ec2-52-31-0-129.eu-west-1.compute.amazonaws.com:8080/nefolog/";
+	var nefologURLCost= NEFOLOG_BASE_URL + "/nefolog/";
 	var qStringNefologCost=nefologURLCost+'costCalculator?configid='+$("#configid").val();
 	var listRows= $("#costparameter-list").find("tr");
 	$.each(listRows, function(i,el) {

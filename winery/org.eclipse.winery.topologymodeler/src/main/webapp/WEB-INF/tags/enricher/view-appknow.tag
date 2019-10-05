@@ -167,6 +167,10 @@ function showDiagKnowledgeApp(){
 	$("#displayAppKnowledge").modal("show");
 }
 
+var SIMILARITY_ENGINE_BASE_URL="http://0.0.0.0:8095";
+var PERTOS_BASE_URL="http://0.0.0.0:8090";
+var NEFOLOG_BASE_URL="http://0.0.0.0:8080";
+
 function showAppKnowledge(id) {		
 	var metric_names = ["Response Time", "Throughput", "Processing Time", "Avg. Read Speed", "Avg. Write Speed",
 			"Avg. Migration Time", "Latency", "Backup Time", "Bandwith", "Processor Speed", "Storage Size",
@@ -176,7 +180,7 @@ function showAppKnowledge(id) {
 			"VM Startup Time", "Cloud Service Uptime", "Cloud Resource Uptime", "Meantime Between Failures",
 			"Meantime to Repair" ];
 	$.ajax({
-		url: "/SimilarityEngine/application-knowledge/"+id,
+		url: SIMILARITY_ENGINE_BASE_URL + "/SimilarityEngine/application-knowledge/"+id,
 		type: "GET",
 		beforeSend:function(){
 			$("#comp-know").show();

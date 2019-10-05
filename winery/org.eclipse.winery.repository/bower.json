@@ -1,5 +1,5 @@
 {
-  "name": "Winery",
+  "name": "winery",
   "version": "0.1.37-SNAPSHOT",
   "author": "Oliver Kopp <kopp.dev@gmail.com>",
   "contributors": [
@@ -17,6 +17,9 @@
     },
     {
       "name": "Jerome Tagliaferri"
+    },
+    {
+      "name": "Santiago Gomez Saez"
     }
   ],
   "licenses": [

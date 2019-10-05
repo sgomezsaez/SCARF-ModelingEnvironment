@@ -150,4 +150,12 @@
 		<function-class>java.util.UUID</function-class>
 		<function-signature>java.util.UUID randomUUID()</function-signature>
 	</function>
+	
+	<!-- SCARF-UtilityModule Functions -->
+	<function>
+		<name>scarfUtilityModuleURL</name>
+		<function-class>org.eclipse.winery.repository.Utils</function-class>
+		<function-signature>java.lang.String getScarfUtilityModuleURL()</function-signature>
+	</function>
+	
 </taglib>

@@ -58,6 +58,10 @@ public class Prefs implements ServletContextListener {
 	// the properties from winery.properties
 	protected Properties properties = null;
 	
+	// SCARF-Utility Module
+
+	private String scarfUtilityModuleURL;
+	
 	// package visibility to ease testing
 	static final String PROP_JCLOUDS_CONTEXT_PROVIDER = "jclouds.context.provider";
 	static final String PROP_JCLOUDS_CONTEXT_IDENTITY = "jclouds.context.identity";
@@ -198,6 +202,9 @@ public class Prefs implements ServletContextListener {
 		
 		this.wineryTopologyModelerPath = p.getProperty("topologymodeler");
 		
+		// Getting SCARF-UtilityModule URL
+		this.scarfUtilityModuleURL = p.getProperty("scarfUtilityModuleURL");
+		
 		// make the properties known in the class
 		this.properties = p;
 		
@@ -328,5 +335,11 @@ public class Prefs implements ServletContextListener {
 	public String getBPMN4TOSCABaseURL() {
 		return this.properties.getProperty(Prefs.PROP_BPMN4TOSCA_MODELER_URI);
 	}
+	
+	public String getScarfUtilityModuleURL() {
+		// TODO Auto-generated method stub
+		return this.scarfUtilityModuleURL;
+	}
+
 	
 }

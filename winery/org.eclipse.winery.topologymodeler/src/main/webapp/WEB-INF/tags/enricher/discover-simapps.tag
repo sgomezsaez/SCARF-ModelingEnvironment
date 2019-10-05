@@ -1,6 +1,7 @@
 <%@tag description="Renders the list of similar apps" pageEncoding="UTF-8"%>
 <%@taglib prefix="o"  tagdir="/WEB-INF/tags/common/orioneditor"%>
 <%@taglib prefix="w"  tagdir="/WEB-INF/tags"%>
+<%@taglib prefix="utility"  tagdir="/WEB-INF/tags/utility"%>
 
 <div class="modal fade" id="displaySimilarApps">
 	<div class="modal-dialog modal-lg">
@@ -22,6 +23,7 @@
 						        <th>Knowledge</th>
 						        <th>Mu-Topology</th>
 						        <th>Distribution Cost</th>
+						        <th>Utility</th>
 						      </tr>
 						    </thead>
 						    <tbody id="simapp-list"></tbody>   					      
@@ -63,6 +65,7 @@ function showSimilarityData(data,topologyTemplateURL){
 		
 		$("#simapp-list").append('<tr id="rowsim'+i+'"></tr>');
 		$('#rowsim'+i).append('<td>   </td>');
+		
 		$('#rowsim'+i).append('<td><a href='+data[i].url+' target="_blank">'+data[i].appId+'<a></td>');
 		$('#rowsim'+i).append('<td>'+data[i].workloadSimilarity+'</td>');
 		$('#rowsim'+i).append('<td>'+data[i].performanceSimilarity+'</td>');
@@ -75,7 +78,8 @@ function showSimilarityData(data,topologyTemplateURL){
 	    //alert(encodedDistURL);
 	    $('#rowsim'+i).append('<td><a href="javascript:void(0)" onclick="return redirectAdapt('+encodedTemplateURL+','+encodedDistURL+')">Refine</a></td>');
 	    $('#rowsim'+i).append('<td><a href="javascript:void(0)" onclick="showCostNefolog('+data[i].appId+')">View</a></td>');
-	    
+	    $('#rowsim'+i).append('<td><a href="javascript:void(0)" id="utility_' + data[i].appId + '" onclick="startUtilityCalculation('+data[i].appId+','+"'"+data[i].url+"'"+')">Calculate</a></td>');
+
 	    //$('#rowsim'+i).append('<td><a href="javascript:void(0)" onclick="showAppKnowledge('+data[i].appId+')"><img class= "icon" src="view-icon.png" /></a></td>');
 	    //('#optionsSim'+i).append('<a href="javascript:void(0)" onclick="showAppKnowledge('+data[i].appId+')"><img src="../images/redist-icon.png" /></a>');
 		//$('#optionsSim'+i).append('<a href="javascript:void(0)" onclick="showAppKnowledge('+data[i].appId+')"><img src="../images/cost-icon.png" /></a>');

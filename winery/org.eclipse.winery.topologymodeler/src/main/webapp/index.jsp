@@ -14,6 +14,8 @@
  *******************************************************************************/
 --%>
 
+<%@page import="java.io.Console"%>
+<%@page import="java.util.Iterator"%>
 <%@page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@page buffer="none" %>
 <%@page import="java.util.Collection"%>
@@ -65,7 +67,6 @@
 <%@taglib prefix="nt"    tagdir="/WEB-INF/tags/common/templates/nodetemplates" %>
 <%@taglib prefix="ntrq"  tagdir="/WEB-INF/tags/common/templates/nodetemplates/reqscaps" %>
 <%@taglib prefix="pol"   tagdir="/WEB-INF/tags/common/policies" %>
-<%@taglib prefix="enr"     tagdir="/WEB-INF/tags/enricher" %>
 
 <%@taglib prefix="t"     tagdir="/WEB-INF/tags" %>
 
@@ -73,6 +74,8 @@
 <%@taglib prefix="wc"    uri="http://www.eclipse.org/winery/functions" %>
 
 <%@taglib prefix="tc"   tagdir="/WEB-INF/tags/common/topologycompletion"%>
+<%@taglib prefix="utility"     tagdir="/WEB-INF/tags/utility" %>
+<%@taglib prefix="enr"     tagdir="/WEB-INF/tags/enricher" %>
 
 <%
 	String repositoryURL = request.getParameter("repositoryURL");
@@ -234,6 +237,16 @@
 <%
   // only required for generating the CSS for each node type
   Collection<TNodeType> allNodeTypes = client.getAllTypes(TNodeType.class);
+		  
+  /* BEGIN SCARF Node Type Analysis */
+  Iterator<TNodeType> i = allNodeTypes.iterator();
+  log("SCARF: retrieving Node Types");
+  while (i.hasNext()) {
+	  TNodeType nodeType = i.next();
+	  log("SCARF: retrieved Node Type: " + nodeType.getName()); 
+	  
+  }
+  /* END SCARF Node Type Analysis */
 %>
 
 <tmpl:CSSForTypes nodeTypes="<%=allNodeTypes%>" relationshipTypes="<%=relationshipTypes%>"/>
@@ -252,6 +265,7 @@
 <enr:discover-simapps />
 <enr:view-appknow />
 <enr:cost-nefolog />
+<utility:utility />
 <script>
 $( document ).ready(function() {
 	var nameDistribution = "<%=id%>";
@@ -468,12 +482,12 @@ Collection<QNameWithName> artifactTemplateList = client.getListOfAllInstances(Ar
 			<button class="btn btn-default" onclick="verticalAlignment();">Align-v (-)</button>
 		</div>
 		 <div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Similarity Analysis <span class="caret"></span></button>
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> SCARF <span class="caret"></span></button>
 
 			<ul class="dropdown-menu" role="menu">
-				<li><a href="#" onclick="showPerformance();">Performance Requirements</a></li>				
-				<li><a href="#" onclick="showWorkload();">Workload Characteristics</a></li>				
-				<li><a href="#" onclick="showDiagSimilarApps();">Discover Similar Applications</a></li>
+				<li><a href="#" onclick="showPerformance();">Performance Reqs</a></li>				
+				<li><a href="#" onclick="showWorkload();">Workload Behaviour</a></li>				
+				<li><a href="#" onclick="showDiagSimilarApps();">Similar Topologies</a></li>
 			</ul>
 		</div>
 
@@ -1600,6 +1614,11 @@ require(["winery-topologymodeler-AMD"], function(wt) {
  *This is the function that is called when redirecting to the refinement interface 
  */
 function redirectAdapt(urlTemplateAlpha, urlTemplateGamma ){
+	console.log("redirectAdapt: init");
+	console.log("redirectAdapt: received url template alpha " + urlTemplateAlpha);
+	console.log("redirectAdapt: received url template gamma " + urlTemplateGamma);
+	var winery_base_url="http://localhost:8080";
+	
 	//Obtaining the XML specifying the the Workload
 	var workloadSet=$("#workloadHidden").val();
 	//Obtaining the XML describing the performance characteristics
@@ -1612,7 +1631,7 @@ function redirectAdapt(urlTemplateAlpha, urlTemplateGamma ){
     //form.setAttribute("id", "formData");
     form.setAttribute("target", "_blank");
     form.setAttribute("method", "POST");
-    form.setAttribute("action", "http://localhost:8080/winery-topologymodeler/redistributeIndex.jsp?"+decodeURIComponent(urlTemplateAlpha)+"&mu="+decodeURIComponent(urlTemplateGamma));
+    form.setAttribute("action", winery_base_url + "/winery-topologymodeler/redistributeIndex.jsp?"+decodeURIComponent(urlTemplateAlpha)+"&mu="+decodeURIComponent(urlTemplateGamma));
     
 	//Adding the workload to a field    
     var hiddenField7 = document.createElement("input");

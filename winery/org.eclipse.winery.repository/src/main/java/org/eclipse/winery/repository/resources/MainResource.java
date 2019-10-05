@@ -62,6 +62,12 @@ public class MainResource {
 		return new APIResource();
 	}
 	
+	@Path("Kereta/")
+	public APIResource KeretaHome() {
+		
+		return new APIResource();
+	}
+	
 	@Path("artifacttemplates/")
 	public ArtifactTemplatesResource artifacttemplates() {
 		return new ArtifactTemplatesResource();

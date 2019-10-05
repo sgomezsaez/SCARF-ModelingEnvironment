@@ -16,6 +16,7 @@
 <div>
 	<a class="btn btn-primary" id="newtab" style="cursor:pointer;" href="${it.location}" target="_blank" >Open Editor</a>
 	<a class="btn btn-info" href="topologytemplate/?view" target="_blank" >Open View</a>
+	<button class="btn btn-info" role="button" onClick="kereta_assignDialog();">Assign to Application</button>
 	<br>
 	<br>
 	<div id="loading" class="topologyTemplatePreviewSizing" style="position:absolute; background-color: white; z-index:5;">Loading preview...</div>

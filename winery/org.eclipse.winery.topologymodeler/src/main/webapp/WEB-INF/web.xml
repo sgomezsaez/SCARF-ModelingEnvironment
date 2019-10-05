@@ -23,7 +23,7 @@
   		<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
   		<init-param>
         	<param-name>cors.allowed.origins</param-name>
-        	<param-value>http://ec2-52-31-0-129.eu-west-1.compute.amazonaws.com:8080/</param-value>
+        	<param-value>http://0.0.0.0:8080/</param-value>
    		 </init-param>
 	</filter>
 	<filter-mapping>

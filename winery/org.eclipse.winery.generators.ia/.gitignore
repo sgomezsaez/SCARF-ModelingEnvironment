@@ -1,1 +1,9 @@
-/target/
+.classpath
+/.gradle
+.settings
+.project
+/.sonar
+/bin
+/build
+/src/main/resources/rebel.xml
+/target

@@ -80,6 +80,7 @@
 		<!--  additional resources -->
 		<url-pattern>/</url-pattern>
 		<url-pattern>/admin/*</url-pattern>
+		<url-pattern>/kereta/*</url-pattern>
 		<url-pattern>/API/*</url-pattern>
 		<url-pattern>/other/*</url-pattern>
 		<url-pattern>/test/*</url-pattern>
