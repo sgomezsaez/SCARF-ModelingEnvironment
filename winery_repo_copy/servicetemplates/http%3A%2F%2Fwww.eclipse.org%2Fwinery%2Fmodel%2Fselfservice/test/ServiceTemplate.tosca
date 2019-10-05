@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-test" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:ServiceTemplate id="test" name="test" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate name="MediaWiki" id="Wiki_App" type="ns0:Wiki_App" winery:x="564.986" winery:y="37.9757"/>
+            <tosca:NodeTemplate name="Frontend" id="PHP_App" type="ns0:PHP_App" winery:x="321" winery:y="172"/>
+            <tosca:NodeTemplate name="Backend_DB" id="SQL_DB" type="ns0:SQL_DB" winery:x="822" winery:y="179"/>
+            <tosca:RelationshipTemplate name="con_43" id="con_43" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Wiki_App"/>
+                <tosca:TargetElement ref="SQL_DB"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_55" id="con_55" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Wiki_App"/>
+                <tosca:TargetElement ref="PHP_App"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_67" id="con_67" type="winery:InteractsWith">
+                <tosca:SourceElement ref="PHP_App"/>
+                <tosca:TargetElement ref="SQL_DB"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

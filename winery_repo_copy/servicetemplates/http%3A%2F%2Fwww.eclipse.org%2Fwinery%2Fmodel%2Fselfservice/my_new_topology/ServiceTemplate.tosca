@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-my_new_topology" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:ServiceTemplate id="my_new_topology" name="my_new_topology" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate name="MediaWiki" id="Wiki_App" type="ns0:Wiki_App" winery:x="564.986" winery:y="37.9757"/>
+            <tosca:NodeTemplate name="Frontend" id="PHP_App" type="ns0:PHP_App" winery:x="321" winery:y="172"/>
+            <tosca:NodeTemplate name="Backend_DB" id="SQL_DB" type="ns0:SQL_DB" winery:x="822" winery:y="179"/>
+            <tosca:NodeTemplate name="Apache_PHP_Module" id="PHP_Container" type="ns0:PHP_Container" winery:x="282.965" winery:y="290.99"/>
+            <tosca:NodeTemplate name="Apache_HTTP_Server" id="Web_Server" type="ns0:Web_Server" winery:x="254.972" winery:y="420.969"/>
+            <tosca:NodeTemplate name="Ubuntu_16_04_LTS" id="Ubuntu_Server" type="ns0:Ubuntu_Server" winery:x="385.993" winery:y="545"/>
+            <tosca:NodeTemplate name="m1_medium" id="elasticComputeCloud" type="ns0:elasticComputeCloud" winery:x="386.983" winery:y="680.972"/>
+            <tosca:NodeTemplate name="MySQL" id="SQL_Server" type="ns0:SQL_Server" winery:x="798.986" winery:y="293.976"/>
+            <tosca:NodeTemplate name="db_m4_large" id="relationalDatabaseService" type="ns0:relationalDatabaseService" winery:x="783.986" winery:y="444.986"/>
+            <tosca:RelationshipTemplate name="con_43" id="con_43" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Wiki_App"/>
+                <tosca:TargetElement ref="SQL_DB"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_55" id="con_55" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Wiki_App"/>
+                <tosca:TargetElement ref="PHP_App"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_76" id="con_76" type="winery:HostedOn">
+                <tosca:SourceElement ref="Web_Server"/>
+                <tosca:TargetElement ref="Ubuntu_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_88" id="con_88" type="winery:HostedOn">
+                <tosca:SourceElement ref="Ubuntu_Server"/>
+                <tosca:TargetElement ref="elasticComputeCloud"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_100" id="con_100" type="winery:InteractsWith">
+                <tosca:SourceElement ref="PHP_App"/>
+                <tosca:TargetElement ref="SQL_DB"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_118" id="con_118" type="winery:HostedOn">
+                <tosca:SourceElement ref="SQL_DB"/>
+                <tosca:TargetElement ref="SQL_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_130" id="con_130" type="winery:HostedOn">
+                <tosca:SourceElement ref="SQL_Server"/>
+                <tosca:TargetElement ref="relationalDatabaseService"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_88" id="con_88" type="winery:HostedOn">
+                <tosca:SourceElement ref="PHP_App"/>
+                <tosca:TargetElement ref="PHP_Container"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_82" id="con_82" type="winery:HostedOn">
+                <tosca:SourceElement ref="PHP_Container"/>
+                <tosca:TargetElement ref="Web_Server"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-test_confluence_alpha" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:ServiceTemplate id="test_confluence_alpha" name="test_confluence_alpha" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate name="MyTestConfluence" id="Wiki_App" type="ns0:Wiki_App" winery:x="592" winery:y="62"/>
+            <tosca:NodeTemplate name="Frontend" id="WAR" type="ns0:WAR" winery:x="374.99" winery:y="239.986"/>
+            <tosca:NodeTemplate name="BackendDB" id="SQL_DB" type="ns0:SQL_DB" winery:x="759.993" winery:y="247.99"/>
+            <tosca:RelationshipTemplate name="con_16" id="con_16" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Wiki_App"/>
+                <tosca:TargetElement ref="WAR"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_28" id="con_28" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Wiki_App"/>
+                <tosca:TargetElement ref="SQL_DB"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_40" id="con_40" type="winery:InteractsWith">
+                <tosca:SourceElement ref="WAR"/>
+                <tosca:TargetElement ref="SQL_DB"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

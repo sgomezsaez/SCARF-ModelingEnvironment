@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-Moodle" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:ServiceTemplate id="Moodle" name="Moodle" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate name="Moodle" id="elearning_App" type="ns0:elearning_App" winery:x="563.99" winery:y="7.98611"/>
+            <tosca:NodeTemplate name="Frontend" id="PHP_App" type="ns0:PHP_App" winery:x="409" winery:y="123"/>
+            <tosca:NodeTemplate name="BackendDB" id="SQL_DB" type="ns0:SQL_DB" winery:x="740.993" winery:y="126.99"/>
+            <tosca:NodeTemplate name="Apache_PHP_Module" id="PHP_Container" type="ns0:PHP_Container" winery:x="410" winery:y="256"/>
+            <tosca:NodeTemplate name="Apache_HTTP_Server" id="Web_Server" type="ns0:Web_Server" winery:x="411" winery:y="380"/>
+            <tosca:NodeTemplate name="Ubuntu_16_04_LTS" id="Ubuntu_Server" type="ns0:Ubuntu_Server" winery:x="412.997" winery:y="498.976"/>
+            <tosca:NodeTemplate name="m1.medium" id="elasticComputeCloud" type="ns0:elasticComputeCloud" winery:x="412.986" winery:y="625.99"/>
+            <tosca:NodeTemplate name="MariaDB" id="SQL_Server" type="ns0:SQL_Server" winery:x="745" winery:y="260"/>
+            <tosca:NodeTemplate name="db.m4.large" id="relationalDatabaseService" type="ns0:relationalDatabaseService" winery:x="746" winery:y="379"/>
+            <tosca:RelationshipTemplate name="con_28" id="con_28" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="elearning_App"/>
+                <tosca:TargetElement ref="PHP_App"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_40" id="con_40" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="elearning_App"/>
+                <tosca:TargetElement ref="SQL_DB"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_52" id="con_52" type="winery:HostedOn">
+                <tosca:SourceElement ref="PHP_App"/>
+                <tosca:TargetElement ref="PHP_Container"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_64" id="con_64" type="winery:HostedOn">
+                <tosca:SourceElement ref="PHP_Container"/>
+                <tosca:TargetElement ref="Web_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_76" id="con_76" type="winery:HostedOn">
+                <tosca:SourceElement ref="Web_Server"/>
+                <tosca:TargetElement ref="Ubuntu_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_88" id="con_88" type="winery:HostedOn">
+                <tosca:SourceElement ref="Ubuntu_Server"/>
+                <tosca:TargetElement ref="elasticComputeCloud"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_100" id="con_100" type="winery:InteractsWith">
+                <tosca:SourceElement ref="PHP_App"/>
+                <tosca:TargetElement ref="SQL_DB"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_115" id="con_115" type="winery:HostedOn">
+                <tosca:SourceElement ref="SQL_DB"/>
+                <tosca:TargetElement ref="SQL_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_130" id="con_130" type="winery:HostedOn">
+                <tosca:SourceElement ref="SQL_Server"/>
+                <tosca:TargetElement ref="relationalDatabaseService"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

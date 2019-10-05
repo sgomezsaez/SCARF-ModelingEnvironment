@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions id="winery-defs-for_ns0-Media_Wiki" targetNamespace="http://www.eclipse.org/winery/model/selfservice" xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12">
+    <tosca:ServiceTemplate id="Media_Wiki" name="Media Wiki" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate name="MediaWiki_WebApp" id="MediaWiki_WebApp" type="ns0:MediaWiki_WebApp" winery:x="481" winery:y="12"/>
+            <tosca:NodeTemplate name="MediaWikiPHP_App" id="MediaWikiPHP_App" type="ns0:MediaWikiPHP_App" winery:x="244" winery:y="116"/>
+            <tosca:NodeTemplate name="WikiDB_MySQLDB" id="WikiDB_MySQLDB" type="ns0:WikiDB_MySQLDB" winery:x="735" winery:y="134"/>
+            <tosca:NodeTemplate name="ApachePHPModule" id="ApachePHPModule" type="ns0:ApachePHPModule" winery:x="243" winery:y="239"/>
+            <tosca:NodeTemplate name="ApacheWebserver" id="ApacheWebserver" type="ns0:ApacheWebserver" winery:x="224" winery:y="362"/>
+            <tosca:NodeTemplate name="UbuntuVM" id="UbuntuVM" type="ns0:UbuntuVM" winery:x="217" winery:y="482"/>
+            <tosca:NodeTemplate name="AmazonEC2" id="AmazonEC2" type="ns0:AmazonEC2" winery:x="206" winery:y="610"/>
+            <tosca:NodeTemplate name="MySQLServer" id="MySQLServer" type="ns0:MySQLServer" winery:x="755" winery:y="461"/>
+            <tosca:RelationshipTemplate name="con_138" id="con_138" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="MediaWiki_WebApp"/>
+                <tosca:TargetElement ref="MediaWikiPHP_App"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_150" id="con_150" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="MediaWiki_WebApp"/>
+                <tosca:TargetElement ref="WikiDB_MySQLDB"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_40" id="con_40" type="winery:InteractsWith">
+                <tosca:SourceElement ref="MediaWikiPHP_App"/>
+                <tosca:TargetElement ref="WikiDB_MySQLDB"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_94" id="con_94" type="winery:HostedOn">
+                <tosca:SourceElement ref="MediaWikiPHP_App"/>
+                <tosca:TargetElement ref="ApachePHPModule"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_106" id="con_106" type="winery:HostedOn">
+                <tosca:SourceElement ref="ApachePHPModule"/>
+                <tosca:TargetElement ref="ApacheWebserver"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_118" id="con_118" type="winery:HostedOn">
+                <tosca:SourceElement ref="ApacheWebserver"/>
+                <tosca:TargetElement ref="UbuntuVM"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_130" id="con_130" type="winery:HostedOn">
+                <tosca:SourceElement ref="UbuntuVM"/>
+                <tosca:TargetElement ref="AmazonEC2"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_142" id="con_142" type="winery:HostedOn">
+                <tosca:SourceElement ref="WikiDB_MySQLDB"/>
+                <tosca:TargetElement ref="MySQLServer"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_154" id="con_154" type="winery:HostedOn">
+                <tosca:SourceElement ref="MySQLServer"/>
+                <tosca:TargetElement ref="UbuntuVM"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

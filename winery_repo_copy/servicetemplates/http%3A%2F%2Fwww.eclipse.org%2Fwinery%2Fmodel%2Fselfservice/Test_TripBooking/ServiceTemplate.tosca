@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-Test_TripBooking" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:ServiceTemplate id="Test_TripBooking" name="Test_TripBooking" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate name="Trip_Booking" id="Smart_City_App" type="ns0:Smart_City_App" winery:x="629.986" winery:y="188.997"/>
+            <tosca:NodeTemplate name="Passenger" id="Business_Process" type="ns0:Business_Process" winery:x="114.983" winery:y="326.976"/>
+            <tosca:NodeTemplate name="UMS" id="Business_Process_2" type="ns0:Business_Process" winery:x="444.972" winery:y="325.972"/>
+            <tosca:NodeTemplate name="Payment" id="Business_Process_3" type="ns0:Business_Process" winery:x="1082.93" winery:y="313.962"/>
+            <tosca:NodeTemplate name="Location_System" id="Business_Process_4" type="ns0:Business_Process" winery:x="629.979" winery:y="519.965"/>
+            <tosca:NodeTemplate name="Transportation_Mean" id="Business_Process_5" type="ns0:Business_Process" winery:x="887.938" winery:y="522.903"/>
+            <tosca:RelationshipTemplate name="con_34" id="con_34" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Smart_City_App"/>
+                <tosca:TargetElement ref="Business_Process"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_46" id="con_46" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Smart_City_App"/>
+                <tosca:TargetElement ref="Business_Process_2"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_58" id="con_58" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Smart_City_App"/>
+                <tosca:TargetElement ref="Business_Process_3"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_70" id="con_70" type="winery:InteractsWith">
+                <tosca:SourceElement ref="Business_Process"/>
+                <tosca:TargetElement ref="Business_Process_2"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_82" id="con_82" type="winery:InteractsWith">
+                <tosca:SourceElement ref="Business_Process_2"/>
+                <tosca:TargetElement ref="Business_Process_3"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_55" id="con_55" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Smart_City_App"/>
+                <tosca:TargetElement ref="Business_Process_5"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_67" id="con_67" type="winery:InteractsWith">
+                <tosca:SourceElement ref="Business_Process_2"/>
+                <tosca:TargetElement ref="Business_Process_5"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_85" id="con_85" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Smart_City_App"/>
+                <tosca:TargetElement ref="Business_Process_4"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_97" id="con_97" type="winery:InteractsWith">
+                <tosca:SourceElement ref="Business_Process_2"/>
+                <tosca:TargetElement ref="Business_Process_4"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

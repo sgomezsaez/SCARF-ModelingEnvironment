@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-MyWebShop" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:ServiceTemplate id="MyWebShop" name="MyWebShop" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate name="MyWebShop" id="B2C_App" type="ns0:B2C_App" winery:x="606.997" winery:y="11.9688"/>
+            <tosca:NodeTemplate name="Frontend" id="PHP_App" type="ns0:PHP_App" winery:x="288" winery:y="155"/>
+            <tosca:NodeTemplate name="Backend" id="WAR" type="ns0:WAR" winery:x="604.986" winery:y="159.986"/>
+            <tosca:NodeTemplate name="BackendDB" id="SQL_DB" type="ns0:SQL_DB" winery:x="926" winery:y="159"/>
+            <tosca:NodeTemplate name="Apache_PHP_Module" id="PHP_Container" type="ns0:PHP_Container" winery:x="289" winery:y="298"/>
+            <tosca:NodeTemplate name="Apache_HTTP_Server" id="Web_Server" type="ns0:Web_Server" winery:x="292" winery:y="437"/>
+            <tosca:NodeTemplate name="Win_2003_OS" id="Win_OS" type="winery:Win_OS" winery:x="293" winery:y="562"/>
+            <tosca:NodeTemplate name="m1_medium" id="elasticComputeCloud" type="ns0:elasticComputeCloud" winery:x="288.993" winery:y="687.986"/>
+            <tosca:NodeTemplate name="Apache_Tomcat" id="Application_Server" type="ns0:Application_Server" winery:x="602" winery:y="297"/>
+            <tosca:NodeTemplate name="Java7" id="Java_Virtual_Machine" type="ns0:Java_Virtual_Machine" winery:x="601" winery:y="432"/>
+            <tosca:NodeTemplate name="Ubuntu_16_04_LTS" id="Ubuntu_Server" type="ns0:Ubuntu_Server" winery:x="602.99" winery:y="561.99"/>
+            <tosca:NodeTemplate name="m1_medium" id="elasticComputeCloud_2" type="ns0:elasticComputeCloud" winery:x="605" winery:y="695"/>
+            <tosca:NodeTemplate name="MySQL" id="SQL_Server" type="ns0:SQL_Server" winery:x="925" winery:y="298"/>
+            <tosca:NodeTemplate name="db_m4_large" id="relationalDatabaseService" type="ns0:relationalDatabaseService" winery:x="928.99" winery:y="430.986"/>
+            <tosca:RelationshipTemplate name="con_19" id="con_19" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="B2C_App"/>
+                <tosca:TargetElement ref="PHP_App"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_31" id="con_31" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="B2C_App"/>
+                <tosca:TargetElement ref="WAR"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_43" id="con_43" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="B2C_App"/>
+                <tosca:TargetElement ref="SQL_DB"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_58" id="con_58" type="winery:HostedOn">
+                <tosca:SourceElement ref="PHP_App"/>
+                <tosca:TargetElement ref="PHP_Container"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_79" id="con_79" type="winery:HostedOn">
+                <tosca:SourceElement ref="PHP_Container"/>
+                <tosca:TargetElement ref="Web_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_91" id="con_91" type="winery:HostedOn">
+                <tosca:SourceElement ref="Web_Server"/>
+                <tosca:TargetElement ref="Win_OS"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_103" id="con_103" type="winery:HostedOn">
+                <tosca:SourceElement ref="Win_OS"/>
+                <tosca:TargetElement ref="elasticComputeCloud"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_133" id="con_133" type="winery:HostedOn">
+                <tosca:SourceElement ref="WAR"/>
+                <tosca:TargetElement ref="Application_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_145" id="con_145" type="winery:HostedOn">
+                <tosca:SourceElement ref="Application_Server"/>
+                <tosca:TargetElement ref="Java_Virtual_Machine"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_157" id="con_157" type="winery:HostedOn">
+                <tosca:SourceElement ref="Java_Virtual_Machine"/>
+                <tosca:TargetElement ref="Ubuntu_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_169" id="con_169" type="winery:HostedOn">
+                <tosca:SourceElement ref="Ubuntu_Server"/>
+                <tosca:TargetElement ref="elasticComputeCloud_2"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_181" id="con_181" type="winery:HostedOn">
+                <tosca:SourceElement ref="SQL_DB"/>
+                <tosca:TargetElement ref="SQL_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_193" id="con_193" type="winery:HostedOn">
+                <tosca:SourceElement ref="SQL_Server"/>
+                <tosca:TargetElement ref="relationalDatabaseService"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-test_simulation_app" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:ServiceTemplate id="test_simulation_app" name="test_simulation_app" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate name="Simulation_App" id="Simulation_App" type="ns0:Simulation_App" winery:x="623" winery:y="87"/>
+            <tosca:NodeTemplate name="Business_Process" id="Business_Process" type="ns0:Business_Process" winery:x="320.99" winery:y="223"/>
+            <tosca:NodeTemplate name="Business_Process_3" id="Business_Process_2" type="ns0:Business_Process" winery:x="636" winery:y="223"/>
+            <tosca:NodeTemplate name="Business_Process_4" id="Business_Process_3" type="ns0:Business_Process" winery:x="994.99" winery:y="222.986"/>
+            <tosca:RelationshipTemplate name="con_19" id="con_19" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Simulation_App"/>
+                <tosca:TargetElement ref="Business_Process"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_31" id="con_31" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Simulation_App"/>
+                <tosca:TargetElement ref="Business_Process_2"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_43" id="con_43" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Simulation_App"/>
+                <tosca:TargetElement ref="Business_Process_3"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_55" id="con_55" type="winery:InteractsWith">
+                <tosca:SourceElement ref="Business_Process"/>
+                <tosca:TargetElement ref="Business_Process_2"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_67" id="con_67" type="winery:InteractsWith">
+                <tosca:SourceElement ref="Business_Process_2"/>
+                <tosca:TargetElement ref="Business_Process_3"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

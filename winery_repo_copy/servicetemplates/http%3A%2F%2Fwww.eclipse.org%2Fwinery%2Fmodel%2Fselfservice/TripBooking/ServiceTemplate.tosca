@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-TripBooking" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:ServiceTemplate id="TripBooking" name="TripBooking" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate name="TripBooking" id="Smart_City_App" type="ns0:Smart_City_App" winery:x="640" winery:y="20"/>
+            <tosca:NodeTemplate name="Passenger" id="Business_Process" type="ns0:Business_Process" winery:x="340.962" winery:y="245.962"/>
+            <tosca:NodeTemplate name="Urban_Mobility" id="Business_Process_2" type="ns0:Business_Process" winery:x="640.948" winery:y="186.962"/>
+            <tosca:NodeTemplate name="Utility_Calculation" id="Business_Process_3" type="ns0:Business_Process" winery:x="958.962" winery:y="247.955"/>
+            <tosca:NodeTemplate name="Apache_ODE" id="Business_Process_Engine" type="ns0:Business_Process_Engine" winery:x="640.983" winery:y="382.969"/>
+            <tosca:NodeTemplate name="Apache_Tomcat" id="Application_Server" type="ns0:Application_Server" winery:x="640" winery:y="519"/>
+            <tosca:NodeTemplate name="Java7" id="Java_Virtual_Machine" type="ns0:Java_Virtual_Machine" winery:x="640.986" winery:y="646.986"/>
+            <tosca:NodeTemplate name="Ubuntu_16_04_LTS" id="Ubuntu_Server" type="ns0:Ubuntu_Server" winery:x="639" winery:y="778"/>
+            <tosca:NodeTemplate name="m1_medium" id="elasticComputeCloud" type="ns0:elasticComputeCloud" winery:x="639" winery:y="908"/>
+            <tosca:NodeTemplate name="ODE_DB" id="SQL_DB" type="ns0:SQL_DB" winery:x="958.983" winery:y="477.997"/>
+            <tosca:NodeTemplate name="MySQL" id="MySQLServer" type="ns0:MySQLServer" winery:x="957.965" winery:y="708.986"/>
+            <tosca:RelationshipTemplate name="con_19" id="con_19" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Smart_City_App"/>
+                <tosca:TargetElement ref="Business_Process"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_31" id="con_31" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Smart_City_App"/>
+                <tosca:TargetElement ref="Business_Process_2"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_43" id="con_43" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Smart_City_App"/>
+                <tosca:TargetElement ref="Business_Process_3"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_55" id="con_55" type="winery:InteractsWith">
+                <tosca:SourceElement ref="Business_Process"/>
+                <tosca:TargetElement ref="Business_Process_2"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_67" id="con_67" type="winery:InteractsWith">
+                <tosca:SourceElement ref="Business_Process_2"/>
+                <tosca:TargetElement ref="Business_Process_3"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_52" id="con_52" type="winery:HostedOn">
+                <tosca:SourceElement ref="Business_Process"/>
+                <tosca:TargetElement ref="Business_Process_Engine"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_64" id="con_64" type="winery:HostedOn">
+                <tosca:SourceElement ref="Business_Process_2"/>
+                <tosca:TargetElement ref="Business_Process_Engine"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_76" id="con_76" type="winery:HostedOn">
+                <tosca:SourceElement ref="Business_Process_3"/>
+                <tosca:TargetElement ref="Business_Process_Engine"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_91" id="con_91" type="winery:HostedOn">
+                <tosca:SourceElement ref="Business_Process_Engine"/>
+                <tosca:TargetElement ref="Application_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_106" id="con_106" type="winery:HostedOn">
+                <tosca:SourceElement ref="Application_Server"/>
+                <tosca:TargetElement ref="Java_Virtual_Machine"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_121" id="con_121" type="winery:HostedOn">
+                <tosca:SourceElement ref="Java_Virtual_Machine"/>
+                <tosca:TargetElement ref="Ubuntu_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_136" id="con_136" type="winery:HostedOn">
+                <tosca:SourceElement ref="Ubuntu_Server"/>
+                <tosca:TargetElement ref="elasticComputeCloud"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_151" id="con_151" type="winery:InteractsWith">
+                <tosca:SourceElement ref="Business_Process_Engine"/>
+                <tosca:TargetElement ref="SQL_DB"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_166" id="con_166" type="winery:HostedOn">
+                <tosca:SourceElement ref="SQL_DB"/>
+                <tosca:TargetElement ref="MySQLServer"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_178" id="con_178" type="winery:HostedOn">
+                <tosca:SourceElement ref="MySQLServer"/>
+                <tosca:TargetElement ref="Ubuntu_Server"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

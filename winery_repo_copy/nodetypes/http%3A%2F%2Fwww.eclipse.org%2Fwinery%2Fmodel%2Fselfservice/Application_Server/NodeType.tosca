@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-Application_Server" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:NodeType name="Application_Server" targetNamespace="http://www.eclipse.org/winery/model/selfservice" winery:bordercolor="#b53552">
+        <tosca:RequirementDefinitions>
+            <tosca:RequirementDefinition xmlns:ns5="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaSpecificTypes" name="Java_Virtual_Machine" requirementType="ns5:Java_Virtual_Machine_Type" lowerBound="0" upperBound="1"/>
+        </tosca:RequirementDefinitions>
+        <tosca:CapabilityDefinitions>
+            <tosca:CapabilityDefinition name="Application_Server_Type" capabilityType="tosca:Application_Server_Type" lowerBound="0" upperBound="1"/>
+        </tosca:CapabilityDefinitions>
+    </tosca:NodeType>
+</tosca:Definitions>

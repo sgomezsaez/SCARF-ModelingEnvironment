@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-OPAL_Simulation" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:ServiceTemplate id="OPAL_Simulation" name="OPAL_Simulation" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate name="OPAL_Simulation" id="Simulation_App" type="ns0:Simulation_App" winery:x="630" winery:y="9"/>
+            <tosca:NodeTemplate name="Simulation_Service" id="WAR" type="ns0:WAR" winery:x="312.976" winery:y="152.986"/>
+            <tosca:NodeTemplate name="OPAL_Workflow" id="Business_Process" type="ns0:Business_Process" winery:x="628.983" winery:y="152.969"/>
+            <tosca:NodeTemplate name="Auditing_Service" id="WAR_2" type="ns0:WAR" winery:x="999.969" winery:y="215.948"/>
+            <tosca:NodeTemplate name="Apache_ODE" id="Business_Process_Engine" type="ns0:Business_Process_Engine" winery:x="630" winery:y="293"/>
+            <tosca:NodeTemplate name="Apache_Tomcat" id="Application_Server" type="ns0:Application_Server" winery:x="633.962" winery:y="421.979"/>
+            <tosca:NodeTemplate name="Java7" id="Java_Virtual_Machine" type="ns0:Java_Virtual_Machine" winery:x="628.99" winery:y="555"/>
+            <tosca:NodeTemplate name="Ubuntu_16_04_LTS" id="Ubuntu_Server" type="ns0:Ubuntu_Server" winery:x="630" winery:y="687"/>
+            <tosca:NodeTemplate name="m1_medium" id="elasticComputeCloud" type="ns0:elasticComputeCloud" winery:x="631" winery:y="818"/>
+            <tosca:NodeTemplate name="ActiveMQ" id="Message_Broker" type="ns0:Message_Broker" winery:x="961.997" winery:y="491.986"/>
+            <tosca:RelationshipTemplate name="con_19" id="con_19" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Simulation_App"/>
+                <tosca:TargetElement ref="WAR"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_31" id="con_31" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Simulation_App"/>
+                <tosca:TargetElement ref="Business_Process"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_43" id="con_43" type="winery:ConsistsOf">
+                <tosca:SourceElement ref="Simulation_App"/>
+                <tosca:TargetElement ref="WAR_2"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_55" id="con_55" type="winery:InteractsWith">
+                <tosca:SourceElement ref="Business_Process"/>
+                <tosca:TargetElement ref="WAR"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_70" id="con_70" type="winery:HostedOn">
+                <tosca:SourceElement ref="Business_Process"/>
+                <tosca:TargetElement ref="Business_Process_Engine"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_85" id="con_85" type="winery:HostedOn">
+                <tosca:SourceElement ref="Business_Process_Engine"/>
+                <tosca:TargetElement ref="Application_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_100" id="con_100" type="winery:HostedOn">
+                <tosca:SourceElement ref="Application_Server"/>
+                <tosca:TargetElement ref="Java_Virtual_Machine"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_115" id="con_115" type="winery:HostedOn">
+                <tosca:SourceElement ref="Java_Virtual_Machine"/>
+                <tosca:TargetElement ref="Ubuntu_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_130" id="con_130" type="winery:HostedOn">
+                <tosca:SourceElement ref="Ubuntu_Server"/>
+                <tosca:TargetElement ref="elasticComputeCloud"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_142" id="con_142" type="winery:HostedOn">
+                <tosca:SourceElement ref="WAR_2"/>
+                <tosca:TargetElement ref="Application_Server"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_157" id="con_157" type="winery:InteractsWith">
+                <tosca:SourceElement ref="WAR_2"/>
+                <tosca:TargetElement ref="Message_Broker"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_169" id="con_169" type="winery:InteractsWith">
+                <tosca:SourceElement ref="Business_Process_Engine"/>
+                <tosca:TargetElement ref="Message_Broker"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate name="con_183" id="con_183" type="winery:HostedOn">
+                <tosca:SourceElement ref="Message_Broker"/>
+                <tosca:TargetElement ref="Java_Virtual_Machine"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

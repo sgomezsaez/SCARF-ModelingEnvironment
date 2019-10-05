@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-Java_Virtual_Machine" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:NodeType name="Java_Virtual_Machine" targetNamespace="http://www.eclipse.org/winery/model/selfservice" winery:bordercolor="#caced6">
+        <tosca:CapabilityDefinitions>
+            <tosca:CapabilityDefinition name="Java_Virtual_Machine" capabilityType="tosca:Java_Virtual_Machine_Type" lowerBound="0" upperBound="1"/>
+        </tosca:CapabilityDefinitions>
+    </tosca:NodeType>
+</tosca:Definitions>

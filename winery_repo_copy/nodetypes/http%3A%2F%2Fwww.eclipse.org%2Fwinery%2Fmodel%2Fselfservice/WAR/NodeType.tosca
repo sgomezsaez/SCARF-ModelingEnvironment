@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-WAR" targetNamespace="http://www.eclipse.org/winery/model/selfservice">
+    <tosca:NodeType name="WAR" targetNamespace="http://www.eclipse.org/winery/model/selfservice" winery:bordercolor="#014ec8">
+        <tosca:RequirementDefinitions>
+            <tosca:RequirementDefinition xmlns:ns5="http://docs.oasis-open.org/tosca/ns/2011/12/ToscaSpecificTypes" name="Application_Server_Type" requirementType="ns5:Application_Server_Type" lowerBound="1" upperBound="1"/>
+        </tosca:RequirementDefinitions>
+    </tosca:NodeType>
+</tosca:Definitions>
